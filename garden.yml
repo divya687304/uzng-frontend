@@ -1,0 +1,28 @@
+kind: Module
+type: container
+name: jupiter-base-ui-image
+disabled: false
+image: jupiter-base-ui
+dockerfile: Dockerfile
+exclude:
+  - ./.garden
+  - ./charts
+  - ./.vscode
+  - ./dist
+  - ./node_modules
+build:
+  targetImage: "${command.name == 'test' ? 'base-stage' : 'production-stage'}"
+tests:
+  - name: unit
+    disabled: ${environment.name == "build"}
+    command: [npm, run, test:unit:run]
+# include:
+#   - ./cypress
+#   - ./src
+#   - ./Dockerfile
+#   - ./nginx.conf
+#   - ./yarn.lock
+#   - ./package.json
+#   - ./tsconfig.app.json
+#   - ./tsconfig.json
+#   - ./tsconfig.vitest.json

@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jupiter-base-ui
+spec:
+  releaseName: jupiter-base-ui
+  chart:
+    spec:
+      chart: jupiter-base-ui
+      sourceRef:
+        kind: HelmRepository
+        name: uniphore-oci-charts
+        namespace: flux-system
+      version: '0.1.0-v5cf85f37'
+  interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  values:
+    replicaCount: 3
+    # production values
+    #auth0ClientID: PagsA0eyTMdE3wZRs6gquAgyIVpoOLTL
+    #auth0Domain: uniphore.us.auth0.com
+    #uniphoreAPI: https://api.uniphore.com
+    # change the above values to staging once prod cluster is set up
+    datadog:
+      env: ''
+    image:
+      id: 'registry.uniphore.com/uniphore/jupiter-base-ui:v-f60dac9ce3'
+    ingress:
+      host: ''
+      hostName: jupiter-base-ui
+      domainName: ${INGRESS_DOMAIN_NAME}
+      certName: ${CERT_NAME}
+      tls:
+        enabled: true
+    oidc:
+      enabled: true
+      issuer: ''

@@ -1,0 +1,44 @@
+$sub-menu-transition-speed: 300ms;
+.menu-toggle-icon {
+  margin-left: auto;
+  transition: transform $sub-menu-transition-speed;
+  &.collapse {
+    transform: rotate(180deg);
+  }
+}
+
+.top-level-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-level-menu-header {
+  height: 3.75rem;
+  &:hover,
+  &:focus {
+    background-color: transparent !important;
+  }
+  .p-ink {
+    display: none;
+    background-color: transparent !important;
+  }
+}
+
+.sub-menu {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows $sub-menu-transition-speed;
+  &.collapse {
+    grid-template-rows: 0fr;
+  }
+}
+
+.sub-menu-container {
+  overflow: hidden;
+  .sub-menu-item {
+    padding: 1rem 2rem 1rem 4.7rem;
+  }
+}
+.menu-text {
+  color: white;
+}

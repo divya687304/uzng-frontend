@@ -1,0 +1,47 @@
+image:
+  id: ""# uanalyze helmrelease-value = '{{ .Values.jupiterBaseUIImage }}'
+
+imagePullSecrets:
+  - name: uniphore-secret
+  - name: dockerhub-secret
+
+# LOGGING CONFIG
+log:
+  apiLevel: INFO # uanalyze helmrelease-value = '{{ .Values.log.apiLevel }}'
+  rootLevel: WARN # uanalyze helmrelease-value = '{{ .Values.log.rootLevel }}'
+  path: /var/log/uniphore/unalyzeNG/jupiter-base-ui/
+
+ingress:
+  host: "" # uanalyze helmrelease-value = 'jupiter-base-ui-{{ .Values.defaultHostname }}'
+  hostName: "" # uanalyze helmrelease-value = 'jupiter-base-ui-{{ .Values.ingress.hostName }}'
+  domainName: "" # uanalyze helmrelease-value = '{{ .Values.ingress.domainName }}'
+  certName: wildcard-cert-cloud-regional
+  wildcardCert:
+    certCloud: wildcard-cert-cloud
+service:
+  port: 80
+
+disabled: false # uanalyze helmrelease-value = '{{ .Values.disabled }}'
+
+idp: auth0
+
+# Openid-connect
+oidc:
+  uanalyzeNG:
+    clientId: "kMmp3qsJMcv63NgI5ErrKHdvRB3F167f"
+    audience: uanalyze.uniphore.com
+
+auth0:
+  domain: "dev-g2j5mu2z.us.auth0.com"
+  orgId: "" # uanalyze helmrelease-value = '{{ .Values.auth0.orgId }}'
+
+useExternalSecret: false
+
+autoscaling:
+  enabled: false # uanalyze helmrelease-value = '{{ .Values.uiComponent.autoscaling.enabled }}'
+  minReplicas: 1 # uanalyze helmrelease-value = '{{ .Values.uiComponent.autoscaling.minReplicas }}'
+  maxReplicas: 3 # uanalyze helmrelease-value = '{{ .Values.uiComponent.autoscaling.maxReplicas }}'
+  # targetMemoryUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 80
+
+defaultHostname: "" # uanalyze helmrelease-value = '{{ .Values.defaultHostname }}'

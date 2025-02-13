@@ -1,0 +1,18 @@
+{
+  "hello": "Bonjour, {name}!",
+  "language": "Langue",
+  "welcome_msg": "Bonjour le monde",
+  "Homepage": "Page d'accueil",
+  "Dashboard": "Tableau de bord",
+  "Tools": "Outils",
+  "Scorecard Studio": "Studio de cartes de pointage",
+  "Conversation Insights": "Aperçu des conversations",
+  "Reports": "Rapports",
+  "Contact Details": "Détails du contact",
+  "Profile": "Profil",
+  "Logout": "Se déconnecter",
+  "Set Preferred Locale": "Définir les paramètres régionaux préférés",
+  "Reset Password": "réinitialiser le mot de passe",
+  "Change Language": "Changer de langue",
+  "LaunchDarkly Enabled": "LaunchDarkly activé"
+}

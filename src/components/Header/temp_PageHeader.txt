@@ -1,0 +1,9 @@
+<template>
+  <h3 class="m-0">
+    my test
+    <slot></slot>
+  </h3>
+  <div>
+    <slot name="actions"></slot>
+  </div>
+</template>

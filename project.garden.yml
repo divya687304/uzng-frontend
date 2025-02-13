@@ -1,0 +1,150 @@
+kind: Project
+name: jupiter-base-ui
+modules:
+  include:
+    - garden.yml
+    - charts/
+variables:
+  remoteModulePrefix: ${local.env.REMOTE_MODULE_PREFIX || "ssh://git"}
+  remoteModulePrefixGithub: ${local.env.REMOTE_MODULE_PREFIX_GITHUB || "ssh://git"}
+  jupiterBaseUIImage: ""
+  urlScheme: https
+  log:
+    apiLevel: DEBUG
+    rootLevel: WARN
+  oidc:
+    uanalyzeNG:
+      clientId: kMmp3qsJMcv63NgI5ErrKHdvRB3F167f
+  auth0:
+    domain: dev-g2j5mu2z.us.auth0.com
+  clusterRegion: "us"
+  idp: auth0
+  useExternalSecret: false
+  host: "us.cloud.uniphoredev.com"
+environments:
+  - name: local
+    defaultNamespace: default
+    variables:
+      urlScheme: http
+      kubernetesProvider: local-kubernetes
+
+  - name: dev
+    defaultNamespace: ${replace(local.usernameLowerCase,'.','-')}
+    variables:
+      kubernetesProvider: kubernetes
+      datadog:
+        env: "dev-${replace(local.usernameLowerCase,'.','-')}"
+
+  - name: staging
+    defaultNamespace: staging
+    variables:
+      kubernetesProvider: kubernetes
+      datadog:
+        env: staging
+
+  - name: ci
+    defaultNamespace: ${project.name}-${local.env.GITHUB_RUN_ID}
+    variables:
+      kubernetesProvider: kubernetes
+      datadog:
+        env: "ci"
+
+  - name: prod
+    production: true
+    variables:
+      kubernetesProvider: kubernetes
+      datadog:
+        env: "production"
+  - name: build
+    defaultNamespace: build
+    variables:
+      kubernetesProvider: kubernetes
+      targetImage: app
+
+providers:
+  - name: jib
+  - name: local-kubernetes
+    environments:
+      - local
+    setupIngressController: kong
+    defaultHostname: localhost
+    namespace:
+      name: ${environment.namespace}
+
+  - name: kubernetes
+    environments:
+      - dev
+    context: arn:aws:eks:us-east-2:346163573116:cluster/uniphore-dev-us-eks-platform
+    defaultHostname: us.cloud.uniphoredev.com
+    namespace:
+      name: ${environment.namespace}
+      annotations:
+        updateTimestamp: ${slice(datetime.now,0,19)}Z
+        lastModifiedBy: ${replace(local.usernameLowerCase,'.','-')}
+    buildMode: cluster-buildkit
+    imagePullSecrets:
+      - name: uniphore-secret
+        namespace: default
+      - name: dockerhub-secret
+        namespace: default
+    deploymentRegistry:
+      hostname: registry.uniphore.com
+      namespace: uniphore
+
+  - name: kubernetes
+    environments:
+      - staging
+    context: arn:aws:eks:us-east-2:346163573116:cluster/uniphore-dev-us-eks-platform
+    defaultHostname: us.cloud.uniphoredev.com
+    namespace:
+      name: ${environment.namespace}
+      annotations:
+        updateTimestamp: ${slice(datetime.now,0,19)}Z
+        lastModifiedBy: ${replace(local.usernameLowerCase,'.','-')}
+    buildMode: cluster-buildkit
+    imagePullSecrets:
+      - name: uniphore-secret
+        namespace: default
+      - name: dockerhub-secret
+        namespace: default
+    deploymentRegistry:
+      hostname: registry.uniphore.com
+      namespace: uniphore
+
+  - name: kubernetes
+    environments:
+      - ci
+    context: arn:aws:eks:us-east-2:346163573116:cluster/uniphore-dev-us-eks-platform
+    defaultHostname: us.cloud.uniphoredev.com
+    namespace:
+      name: ${environment.namespace}
+      annotations:
+        updateTimestamp: ${slice(datetime.now,0,19)}Z
+        lastModifiedBy: ${replace(local.usernameLowerCase,'.','-')}
+    buildMode: cluster-buildkit
+    imagePullSecrets:
+      - name: uniphore-secret
+        namespace: default
+      - name: dockerhub-secret
+        namespace: default
+    deploymentRegistry:
+      hostname: registry.uniphore.com
+      namespace: uniphore
+  - name: kubernetes
+    environments:
+      - build
+    context: arn:aws:eks:us-east-2:346163573116:cluster/uniphore-dev-us-eks-platform
+    defaultHostname: api.staging.uniphoredev.com
+    namespace: build
+    buildMode: cluster-buildkit
+    imagePullSecrets:
+      - name: uniphore-secret
+        namespace: default
+      - name: dockerhub-secret
+        namespace: default
+    deploymentRegistry:
+      hostname: registry.uniphore.com
+      namespace: uniphore
+
+  - name: octant
+    environments: [local, dev]

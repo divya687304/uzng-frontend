@@ -1,0 +1,17 @@
+{
+  "hello": "Hello, {name}!",
+  "language": "Language",
+  "welcome_msg": "Hello world!",
+  "Homepage": "Home page",
+  "Dashboard": "Dashboard",
+  "Tools": "Tools",
+  "Scorecard Studio": "Scorecard Studio",
+  "Conversation Insights": "Conversation Insights",
+  "Reports": "Reports",
+  "Contact Details": "Contact Details",
+  "Profile": "Profile 1",
+  "Logout": "Log Out",
+  "Change Language": "Change Language",
+  "Set Preferred Locale": "Set Preferred Locale",
+  "LaunchDarkly Enabled": "LaunchDarkly Enabled"
+}

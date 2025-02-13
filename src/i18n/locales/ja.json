@@ -1,0 +1,18 @@
+{
+  "hello": "こんにちは、{name}！",
+  "language": "言語",
+  "welcome_msg": "こんにちは世界",
+  "Homepage": "ホームページ",
+  "Dashboard": "ダッシュボード",
+  "Tools": "ツール",
+  "Scorecard Studio": "スコアカード スタジオズ",
+  "Conversation Insights": "会話の洞察",
+  "Reports": "レポート",
+  "Contact Details": "連絡先の詳細",
+  "Profile": "プロフィール",
+  "Logout": "ログアウト",
+  "Set Preferred Locale": "優先ロケールの設定",
+  "Reset Password": "パスワードを再設定する",
+  "Change Language": "言語を変えてください",
+  "LaunchDarkly Enabled": "ダークリーの起動が有効"
+}

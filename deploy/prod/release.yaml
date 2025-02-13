@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jupiter-base-ui
+spec:
+  releaseName: jupiter-base-ui
+  targetNamespace: platform
+  values:
+    datadog:
+      env: prod
+    # production values
+    auth0ClientID: PagsA0eyTMdE3wZRs6gquAgyIVpoOLTL
+    auth0Domain: uniphore.us.auth0.com
+    uniphoreAPI: https://api.uniphore.com
+    uniphoreDomain: uniphore.com
+    oidc:
+      issuer: https://uniphore.us.auth0.com/.well-known/openid-configuration

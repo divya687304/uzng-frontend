@@ -1,0 +1,15 @@
+kind: Module
+type: helm
+name: jupiter-base-ui
+chartPath: .
+
+build:
+  dependencies:
+    - "${var.jupiterBaseUIImage ? null : 'jupiter-base-ui-image'}"
+values:
+  ingress:
+    host: ${var.host}
+    hostName: "jupiter-base-ui-${providers[var.kubernetesProvider].config.namespace.name}"
+    domainName: "${providers[var.kubernetesProvider].config.defaultHostname}"
+  image: 
+    id: ${var.jupiterBaseUIImage || modules.jupiter-base-ui-image.outputs.deployment-image-id}
