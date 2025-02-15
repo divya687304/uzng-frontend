@@ -43,13 +43,23 @@
       <div class="content">
         <Button v-if="!isAuthenticated && !isLoading" @click="login">Log in</Button>
         <!-- <Button v-if="isAuthenticated && !isLoading" @click="logOut"> {{ t("Logout") }}</Button> -->
+        
+        <div class="content">
+        <Button v-if="!isAuthenticated && !isLoading" @click="login">Log in</Button>
+        <!-- <Button v-if="isAuthenticated && !isLoading" @click="logOut"> {{ t("Logout") }}</Button> -->
+        
         <div v-if="isAuthenticated && !isLoading">
           <!-- <HelloWorld :msg="'Jupiter'"></HelloWorld> -->
-           <Services/>
+          <Services/>
+         
         </div>
-
+ 
         <slot />
       </div>
+ 
+        <slot />
+      </div>
+
     </div>
     <PreferredLocal
       :show-dialog="showLocaleDialog"

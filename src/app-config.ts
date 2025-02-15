@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import 'primeflex/primeflex.scss';
 import 'primeicons/primeicons.css';
 

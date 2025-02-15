@@ -14,7 +14,7 @@ variables:
     rootLevel: WARN
   oidc:
     uanalyzeNG:
-      clientId: kMmp3qsJMcv63NgI5ErrKHdvRB3F167f
+      clientId: Btx9olPysHF4v3a3BND6tB5HHtReCqNq
   auth0:
     domain: dev-g2j5mu2z.us.auth0.com
   clusterRegion: "us"

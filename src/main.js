@@ -16,7 +16,7 @@ app.use(
     domain: getEnv('VITE_AUTH0_DOMAIN'),
     clientId: getEnv('VITE_AUTH0_CLIENT_ID'),
     audience: getEnv('VITE_AUTH0_AUDIENCE'), // Ensure this is correctly set
-    clientSecret: getEnv('VITE_AUTH0_SECRET'),
+   
     authorizationParams: {
       redirect_uri: window.location.origin,
       scope: 'openid profile email offline_access' // Ensure `offline_access` is included

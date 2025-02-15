@@ -17,8 +17,8 @@
     "sonar": "sonar-scanner -Dsonar.projectKey=jupiter-base-ui -Dsonar.projectName='jupiter-base-ui' -Dsonar.sources=."
   },
   "dependencies": {
+    "@auth0/auth0-vue": "^2.4.0",
     "@intlify/unplugin-vue-i18n": "^0.12.2",
-    "@auth0/auth0-vue": "^2.3.1",
     "pinia": "^2.1.6",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
@@ -28,12 +28,14 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@babel/types": "^7.26.8",
     "@originjs/vite-plugin-federation": "^1.1.9",
     "@rushstack/eslint-patch": "^1.3.2",
     "@tsconfig/node18": "^18.2.0",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^18.17.5",
     "@vitejs/plugin-vue": "^4.3.1",
+    "@vue/compiler-core": "^3.5.13",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.4.1",
@@ -48,7 +50,7 @@
     "sass": "^1.66.1",
     "start-server-and-test": "^2.0.0",
     "typescript": "~5.1.6",
-    "vite": "^4.4.9",
+    "vite": "^4.5.9",
     "vitest": "^0.34.2",
     "vue-tsc": "^1.8.8"
   }

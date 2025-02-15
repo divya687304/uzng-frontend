@@ -1,3 +1,3 @@
 export default function getEnv(name) {
-    return window?.configs?.[name] || import.meta.env[name]
-  }
+  return import.meta.env[name] || window?.configs?.[name] || "";
+}

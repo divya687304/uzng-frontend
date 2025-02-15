@@ -28,7 +28,7 @@ idp: auth0
 # Openid-connect
 oidc:
   uanalyzeNG:
-    clientId: "kMmp3qsJMcv63NgI5ErrKHdvRB3F167f"
+    clientId: "Btx9olPysHF4v3a3BND6tB5HHtReCqNq"
     audience: uanalyze.uniphore.com
 
 auth0:
