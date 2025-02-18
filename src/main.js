@@ -13,11 +13,10 @@ const app = createAppWithDependency(App);
 
 app.use(
   createAuth0({
-    domain: getEnv('VITE_AUTH0_DOMAIN'),
-    clientId: getEnv('VITE_AUTH0_CLIENT_ID'),
-    audience: getEnv('VITE_AUTH0_AUDIENCE'), // Ensure this is correctly set
-   
+    domain: import.meta.env.VITE_AUTH0_DOMAIN,  
+    clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
     authorizationParams: {
+      audience: import.meta.env.VITE_AUTH0_AUDIENCE , // Ensure this 
       redirect_uri: window.location.origin,
       scope: 'openid profile email offline_access' // Ensure `offline_access` is included
     }

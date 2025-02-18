@@ -43,8 +43,6 @@ function createAppWithDependency(rootComponent: any) {
   app.use(PrimeVue)
   .use(i18n)
   .use(createPinia())
-    .use(PrimeVue)
-    .use(i18n)
     .component('Button', Button)
     .component('Toolbar', Toolbar)
     .component('Menu', Menu)
